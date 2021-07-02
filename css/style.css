@@ -108,7 +108,7 @@ header{
     /* flex-grow: 1; */
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-   background: #11121A;
+     background: #11121A;
 }
 
 .job-tile{
@@ -137,6 +137,7 @@ header{
 .top img{
     width: 50px;
     height: 50px;
+    border-radius: 10px;
 }
 
 .rolename{
@@ -145,11 +146,13 @@ header{
 .rolename span{
     font-size: 22px;
 }
-.description{
+.discription{  
+    flex-grow: 1;
     height: 105px;
     overflow: hidden;
     font-size: 18px;
     color: thistle;
+    
 }
 
 .buttons{

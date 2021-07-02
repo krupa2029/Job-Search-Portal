@@ -14,39 +14,45 @@ function getJobs(){
     })
 }
 
+
+
 function showJobs(jobs){
-    console.log("Jobs in showjobs", jobs);
+    console.log(jobs);
     let jobsContainer = document.querySelector(".jobs-container");
    
     let jobsHTML = "";
+
     jobs.forEach(job => {
         jobsHTML += `
             <div class="job-tile">
-            <div class="top">
-                <img src="./img/icons8-linkedin-circled-100.png">
-                <span class="iconify" data-icon="ic-baseline-more-horiz" data-inline="false"></span>
-            </div>
-            <div class="rolename">
-                <span>Lead Product Design</span>
-            </div>
-            <div class="discription">
-                <span>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi iusto dolorum quidem magni aliquam provident alias obcaecati, nostrum libero porro neque quae, ipsa amet, minima similique sed consequuntur architecto dolor!
-                </span>
-            </div>
-            <div class="buttons">
-                <div class="button apply-now">
-                    Apply now
+                <div class="top">
+                    <img src="${job.logo}" />
+                    <span class="iconify" data-icon="ic-baseline-more-horiz" data-inline="false"></span>
                 </div>
-                <div class="button">
-                    message
+                <div class="rolename">
+                    <span>${job.roleName}</span>
+                </div>
+                <div class="discription">
+                    <span>
+                        ${job.requirements.content}
+                    </span>
+                </div>
+                <div class="buttons">
+                    <div class="button apply-now">
+                        Apply now
+                    </div>
+                    <div class="button">
+                        Message
+                    </div>
                 </div>
             </div>
         `
     })
-    console.log(jobsHTML);
+
+    jobsContainer.innerHTML = jobsHTML;
 
 }
+
 getJobs().then(data => {
     showJobs(data);
 });
