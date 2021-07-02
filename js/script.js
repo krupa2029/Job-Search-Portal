@@ -2,7 +2,11 @@
 document.querySelector(".button-container")
 .addEventListener("click", ()=>{
     let text = document.getElementById("filter-jobs").value;
-//    console.log(text);
+    getJobs().then(jobs => {
+        let filteredJobs = filterJobs(jobs, text);
+        showJobs(filteredJobs);
+
+    })
 })
 
 function getJobs(){
@@ -14,7 +18,23 @@ function getJobs(){
     })
 }
 
-
+function filterJobs(jobs, searchText){
+    if(searchText){
+        let filteredJobs = jobs.filter(job => {
+            if(job.roleName.toLowerCase().includes(searchText) || job.type.toLowerCase().includes(searchText)
+            || job.company.toLowerCase().includes(searchText)
+            || job.requirements.content.toLowerCase().includes(searchText)){
+                return true;
+            }
+            else{
+                return false;
+            }
+        })
+        return filteredJobs;
+    }else{
+        return jobs;
+    }
+}
 
 function showJobs(jobs){
     console.log(jobs);
@@ -53,6 +73,7 @@ function showJobs(jobs){
 
 }
 
+// when the application is loaded
 getJobs().then(data => {
     showJobs(data);
 });
